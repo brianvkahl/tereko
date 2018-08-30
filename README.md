@@ -1,0 +1,2 @@
+# tereko
+question generator
