@@ -1,4 +1,4 @@
-#version 4.2
+#version 4.2.1
 
 import json, random, nltk, en_coref_lg
 from timeit import default_timer as timer
@@ -62,19 +62,15 @@ def get_variants_of_term(text):
 def preprocess_sent(sent):
 	sent=sent.replace("(*) ", "").replace("for 10 points, ", "").replace("For 10 points, ", "").replace(", for 10 points, ", "")
 	if ", but " in sent:
-		doc=nlp(sent)
-		ROOT=False
-		neg=False
-		root_token=None
-		conj_token=None
-		for token in doc:
-			if token.dep_=="ROOT" and token.text in ["'s", "is"]: 
-				ROOT=True
-				root_token=token
-			if token.dep_=="neg" and token in [t for t in root_token.children]: neg=True
-			if token.dep_=="conj": conj_token=token
-		if ROOT and neg:
-			sent=get_sent_subtree_token(conj_token)
+		for t in ["isn't ", "is not", "'s not"]:
+			if t in sent:
+				doc=nlp(sent)
+				conj_token=None
+				for token in doc:
+					if token.dep_=="conj": 
+						conj_token=token
+						break
+				sent=get_sent_subtree_token(conj_token)
 	return sent
 
 def make_q(sent, varints):
