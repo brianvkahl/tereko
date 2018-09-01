@@ -99,7 +99,7 @@ with open("quizdb_sci_5.json", encoding='utf-8') as f:
 
 tossups=data["data"]["tossups"]
 
-w=open('sci_q.txt', 'w')
+w=open('sci_q-release.txt', 'w')
 for tossup in tossups:
 	text=(tossup["text"])
 	variants=get_variants_of_term(text)
