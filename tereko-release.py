@@ -1,7 +1,6 @@
 #version 4.2.1 
 
 import json, random, nltk, en_coref_lg
-from timeit import default_timer as timer
 nlp = en_coref_lg.load()
 
 def format_grammar(text):
