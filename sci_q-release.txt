@@ -26,7 +26,7 @@ What quantity is can be approximated by the negative of the first ionization ene
 ANSWER: chemical potential
 
 What quantity can also be calculated by an insertion method named for Widom?
-ANSWER: chemical potential
+ANSWER: chemical potential 
 
 Temperature, volume, and what quantity are held constant in the grand canonical ensemble?
 ANSWER: chemical potential
